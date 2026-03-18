@@ -16,7 +16,7 @@ export class CreateTodoUseCase {
             return todo;
         } catch (error) {
             this.logger.error(error);
-            throw new Error('Failed to createe toDo');
+            throw new Error('Failed to create toDo');
         }
 
         }
