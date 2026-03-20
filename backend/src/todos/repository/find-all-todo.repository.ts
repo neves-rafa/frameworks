@@ -6,7 +6,7 @@ import { CreateTodoDto } from "../dto/create-todo.dto";
 export class FindAllTodosRepository{
     constructor(private readonly prisma: PrismaService) {}
 
-    async execute() {
+    async findAll() {
         return await this.prisma.todo.findMany();
     }
 }
