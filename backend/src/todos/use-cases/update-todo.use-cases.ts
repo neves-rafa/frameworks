@@ -1,12 +1,31 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable, Logger, NotFoundException } from "@nestjs/common";
+import { FindTodoByIdRepository, UpdateTodoRepository } from "../repository";
 import { UpdatetodoDto } from "../dto/update-todo.dto";
-import { PrismaService } from "src/shared/databases/prisma.database";
-@Injectable()
-export class UpdateTodoRepository{
-    constructor(private readonly prisma: PrismaService){}
 
-    async update(data: UpdatetodoDto, id:string
-    ){
-        return await this.prisma.todo.update({where: {id}, data})
+@Injectable ()
+export class DeleteTodoUseCases {
+    constructor (
+        private readonly findTodoByIdRepository: FindTodoByIdRepository,
+        private readonly updateTodoRepository: UpdateTodoRepository,
+        private readonly logger: Logger,
+    ) {}
+
+    async update(id: string, data: UpdatetodoDto ) {
+        try {
+            this.logger.log('Delecting toDo...')
+
+            const todo = await this.findTodoByIdRepository.findById(id);
+            
+            if (!todo) {
+                throw new NotFoundException ('ToDo not found')
+            }
+
+            await this.updateTodoRepository.update(data, id)
+            this.logger.log('Todos fetched successfully!');
+            return todo;
+        } catch (error) {
+            this.logger.error(error);
+            throw new Error('Failed to fetched todos');
+        }
     }
 }
