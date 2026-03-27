@@ -3,7 +3,7 @@ import { FindTodoByIdRepository, UpdateTodoRepository } from "../repository";
 import { UpdatetodoDto } from "../dto/update-todo.dto";
 
 @Injectable ()
-export class DeleteTodoUseCases {
+export class UpdateTodoUseCases {
     constructor (
         private readonly findTodoByIdRepository: FindTodoByIdRepository,
         private readonly updateTodoRepository: UpdateTodoRepository,
