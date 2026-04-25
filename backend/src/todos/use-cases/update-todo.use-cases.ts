@@ -1,6 +1,6 @@
 import { Injectable, Logger, NotFoundException } from "@nestjs/common";
 import { FindTodoByIdRepository, UpdateTodoRepository } from "../repository";
-import { UpdatetodoDto } from "../dto/update-todo.dto";
+import { UpdateTodoDto } from "../dto/update-todo.dto";
 
 @Injectable ()
 export class UpdateTodoUseCases {
@@ -10,7 +10,7 @@ export class UpdateTodoUseCases {
         private readonly logger: Logger,
     ) {}
 
-    async update(id: string, data: UpdatetodoDto ) {
+    async update(id: string, data: UpdateTodoDto ) {
         try {
             this.logger.log('Delecting toDo...')
 

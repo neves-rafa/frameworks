@@ -5,7 +5,7 @@ export class CreateTodoDto {
     priority: TodoPriority;
     dueAt: Date;
     completedAt:  Date;
-    userId:    String;
+    userId: string;
     createdAt:   Date;
     updatedAt:   Date;
 }

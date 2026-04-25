@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdatetodoDto } from './dto/update-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
 import { CreateTodoUseCase, DeleteTodoUseCases, FindAllTodosUseCase, FindTodoByIdUseCases, UpdateTodoUseCases,  } from './use-cases';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class TodosService {
     return this.findTodoByIdUseCase.findById(id);
   }
 
-  update(id: string, updateTodoDto: UpdatetodoDto) {
+  update(id: string, updateTodoDto: UpdateTodoDto) {
     return this.updateTodoUseCase.update(id, updateTodoDto);
   }
 
