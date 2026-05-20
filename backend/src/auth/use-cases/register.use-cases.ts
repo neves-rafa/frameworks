@@ -22,7 +22,7 @@ export class RegisterUseCase {
         if (existingUser) {
             throw new BadRequestException('Email exists');
         }
-    const passwordHash = await bcrypt.hash(data.passaword, 10);
+    const passwordHash = await bcrypt.hash(data.password, 10);
 
     const user = await this.createUserRepository.create({
         name: data.name,
